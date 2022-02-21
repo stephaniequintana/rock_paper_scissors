@@ -8,8 +8,6 @@
 * [Challenges Encountered and Knowledge Gained](#challenges-encountered-and-knowledge-gained)
 * [Languages](#languages)
 
-
-
 ## General Information
 - The first phase of the project entails setting up the logic of the game:
     * Creating a function which allows the computer to make a random selection.
@@ -17,9 +15,9 @@
     * Finally, creating a function which selects the winner, the best of 5 rounds.
 
 ## Challenges Encountered and Knowledge Gained
-* The Ternary Operator, 
-    `(conditional) ? chooseIfTrue : chooseIfFalse;`, 
-    is by far more convenient than writing out a lengthy if statement. 
+* The Ternary Operator,
+    `(conditional) ? chooseIfTrue : chooseIfFalse;`,
+    is by far more convenient than writing out a lengthy if statement.
 * String Comparison in JavaScript:
     - `string1.localeCompare(string2)` proved to be incredibly useful in the winner selection.
     - Caveats include the necessity of datatype recognition and insurance of variable definition.
@@ -30,5 +28,5 @@
 ## Languages
 - JavaScript
 
-
-
+## To-Do
+- The UI for this project will be completed in section 12.
