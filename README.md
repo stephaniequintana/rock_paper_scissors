@@ -14,6 +14,9 @@
     * Creating a function which prompts a user's selection and returns the winner of the two.
     * Finally, creating a function which selects the winner, the best of 5 rounds.
 
+- The second phase of the project is all about creating a user interface for the game. This was FUN (&&& more challenging than I assumed it would be)!!!
+    * I opted to go with SVGs because I wanted more exposure with working with them. Specifically, I wanted to play with SVG animation.
+
 ## Challenges Encountered and Knowledge Gained
 * The Ternary Operator,
     `(conditional) ? chooseIfTrue : chooseIfFalse;`,
