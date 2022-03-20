@@ -1,4 +1,3 @@
-
 :root {
   --border-btn: 1px solid rgb(36, 36, 36);
   --color-base-bg: rgb(240, 240, 240);
@@ -19,7 +18,7 @@
     box-sizing: inherit;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
@@ -28,7 +27,6 @@ body {
   color: var(--color-base-text);
   font-family: 'Permanent Marker';
   position: relative;
-
 }
 
 .main-container {
@@ -43,12 +41,14 @@ h1 {
   letter-spacing: .6rem;
   margin-top: 2rem;
 }
+
 .tagline {
   display: inline-block;
   margin-top: -1rem;
   font-size: 1.5rem;
   letter-spacing: .1rem;
 }
+
 .btn-play {
   display: flex;
   justify-content:center;
@@ -65,6 +65,7 @@ h1 {
   position: relative;
   z-index: 100;
 }
+
 .btn-play:hover {
   box-shadow: .2rem .2rem 2rem #777;
   transform: scale(1.05);
@@ -78,7 +79,7 @@ h1 {
   margin-top: 3rem;
 }
 
-.bg-img{
+.bg-img {
   height: 40vh;
   width: 40vw;
   display: flex;
@@ -90,15 +91,13 @@ h1 {
   z-index: -1000;
 }
 
-.bg-img img{
+.bg-img img {
   display: block;
   max-width: 100%;
   transform: scale(1.3) rotate(290deg);
-
 }
 
 .game-container {
-  border:2px solid red;
   margin: 0 auto;
   max-width:100vw;
   display: grid;
@@ -114,9 +113,9 @@ h1 {
   justify-items: center;
   align-items: center;
 }
+
 .player-title {
   grid-area: you;
-
 }
 .player-score {
   grid-area: p-score;
@@ -138,83 +137,101 @@ h1 {
   margin-bottom:3rem;
   width: 100%;
   height: 100%;
-  border:2px solid green;
 }
+
 .computer-title {
   grid-area: computer;
 }
+
 .computer-score {
   grid-area: c-score;
 }
+
 .choose {
   grid-area: choose;
   color: var(--player-color);
   justify-self: flex-end;
 }
+
 .arrow1 {
   grid-area: arrow1;
   color: var(--player-color);
 }
+
 .arrow2 {
   grid-area: arrow2;
   color: var(--player-color);
 }
+
 .arrow3 {
   grid-area: arrow3;
   color: var(--player-color);
 }
+
 .rck {
   grid-area: p-rck;
   transform: rotate(90deg);
 }
+
 .ppr {
   grid-area: p-ppr;
   transform: rotate(90deg);
 }
+
 .scrs {
   grid-area: p-scrs;
   transform: rotateY(180deg);
 }
+
 .fist {
   grid-area: fist;
   position: relative;
 }
-.vs{
+
+.vs {
   position: absolute;
   font-size: 10rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .c-rck {
   grid-area: c-rck;
   transform: rotate(-90deg);
 }
+
 .c-ppr {
   grid-area: c-ppr;
   transform: rotate(-90deg);
 }
+
 .c-scrs {
   grid-area: c-scrs;
   transform: rotateX(180deg);
 }
-.arrow4{
+
+.arrow4 {
   grid-area: arrow4;
   color: var(--computer-color);
 }
-.arrow5{
+
+.arrow5 {
   grid-area: arrow5;
   color: var(--computer-color);
 }
-.arrow6{
+
+.arrow6 {
   grid-area: arrow6;
   color: var(--computer-color);
 }
+
 .random {
   grid-area: random;
   color: var(--computer-color);
   justify-self: flex-start;
 }
+
 .reset {
   grid-area: reset;
 }
@@ -223,27 +240,27 @@ h1 {
   font-size: 5rem;
 }
 
-.player-score, .computer-score{
+.player-score, .computer-score {
   font-size: 10rem;
   font-weight: bold;
   display: inline-block;
   margin-top: -2rem;
 }
 
-.player-choice svg{
+.player-choice svg {
   fill: var(--player-color);
 }
 
-#fist{
+#fist {
   fill: var(--fist-color);
   font-size: 3rem;
 }
 
-.computer-choice svg{
+.computer-choice svg {
   fill: var(--computer-color);
 }
 
-.animate{
+.animate {
   animation: fist-pump 2s;
 }
 
@@ -280,7 +297,6 @@ h1 {
 }
 
 .chosen {
-  /* margin-left: 7rem; */
   margin-right:.3rem;
   justify-self:end;
   border-radius: 10px;
@@ -320,33 +336,35 @@ h1 {
   transform: scale(3.1) rotateZ(0deg);
 }
 
-.btn-sm{
+.btn-sm {
   font-size: 1.3rem;
   letter-spacing: .1rem;
   border: 1px solid transparent;
   padding: 1em 2em;
   border-radius: 5px;
   width: 10rem;
-  /* margin-top: 8rem; */
-  /* background: linear-gradient(90deg, rgba(7,78,5,1) 18%, rgba(38,29,253,1) 50%, rgba(163,71,53,1) 85%); */
 }
 
 @media only screen and (max-width: 75em) {
   html{
     font-size: 50%;
   }
+
   .bg-img{
     height: 50vh;
     width: 50vw;
     top: 40%;
     left: 20%;
   }
+
   .game-container{
     margin-top: 1rem;
   }
+
   .player-title, .computer-title {
     font-size: 4rem;
   }
+
   .chosen {
     transform: scale(2.9) rotate(90deg) translateY(-3rem);
   }
@@ -354,6 +372,7 @@ h1 {
   .chosen.scrs {
     transform: scale(2.9) rotate(180deg) translateY(0);
   }
+
   .cmptr-chosen {
     transform: scale(2.9) rotate(-90deg);
   }
@@ -363,29 +382,35 @@ h1 {
   }
 
 }
+
 @media only screen and (max-width: 46.875em) {
   h1{
     font-size:3rem;
   }
-  .bg-img{
+
+  .bg-img {
     height: 60vh;
     width: 60vw;
     top: 15%;
     left: 10%;
   }
-  svg{
+
+  svg {
     transform: scale(.6);
   }
-  .round-summary{
+
+  .round-summary {
     margin: 4rem auto 0;
   }
+
   .choose, .random {
     font-size: 2.5rem;
     font-weight: bold;
     letter-spacing: 1.3
 
+
   }
-  .game-container{
+  .game-container {
     grid-template-rows: repeat(10, min-content);
     grid-template-columns: 1fr repeat(7, minmax(min-content, 5rem)) 1fr;
     grid-template-areas: ". summary summary summary summary summary summary summary  ."
@@ -404,8 +429,6 @@ h1 {
     grid-row: 6 / 9;
     grid-column: 1 / 5;
     transform: scale(2.9) rotate(90deg);
-
-
   }
 
   .chosen.scrs {
@@ -414,6 +437,7 @@ h1 {
     grid-column: 1 / 5;
     transform: scale(2.9) rotate(180deg);
   }
+
   .cmptr-chosen {
     grid-row: 6 / 9;
     grid-column: 6 / 10;
@@ -434,39 +458,44 @@ h1 {
     top: 5%;
     left: 20%;
   }
-  svg{
+
+  svg {
     transform: scale(.5);
   }
-  .round-summary{
+
+  .round-summary {
     margin-top: 5rem;
   }
+
   .player-title, .computer-title {
     font-size: 3rem;
   }
-  .computer-title{
+
+  .computer-title {
     margin-left: -7rem;
   }
-  .p-score, .c-score{
+
+  .p-score, .c-score {
     font-size: 6rem;
   }
-  .player-choice, .computer-choice{
+
+  .player-choice, .computer-choice {
     padding: 1rem;
   }
-  .chosen {
 
+  .chosen {
     transform: scale(2.2) rotate(90deg);
   }
-  .chosen.scrs {
 
+  .chosen.scrs {
     transform: scale(2.2) rotate(180deg) translateY(0);
   }
-  .cmptr-chosen {
 
+  .cmptr-chosen {
     transform: scale(2.2) rotate(-90deg);
   }
 
   .c-scrs.cmptr-chosen {
-
     transform: scale(2.2) rotateZ(0deg);
   }
 }

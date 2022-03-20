@@ -1,12 +1,3 @@
-
-
-// write a function, playRound that plays a single round
-    //  takes two arguments: playerSelection & computerSelection
-    //  return a string that declares a winner
-    // todo ensure playerSelection is case-insensitive
-    //  str.localeCompare(str2) => 0 if same, -1 if 1st operand sorted first, 1 if 2nd operand sorted first
-    //possible outcomes: //  paper beats rock //  rock beats scissors //  scissors beats paper
-        //TIE - same => 0
         // player wins:
             // PAPER v rock
             // ROCK v scissors
@@ -15,7 +6,6 @@
             // rock v PAPER
             // paper v SCISSORS
             // scissors v ROCK
-//  playerSelection.trim().toLocaleLowerCase();
 
 const play = document.getElementById('play');
 const reset = document.getElementById('reset');
@@ -55,25 +45,12 @@ function animateFist(){
   fist.classList.add('animate');
   fist.addEventListener('animationend', () => {
     fist.classList.remove('animate');
-    // fistSVG.style.opacity = ".2";
-    // vs.innerText = "vs.";
   });
 }
-// function playerVsComputer(){
-//   console.log(fistSVG);
-//   console.log(vs.innerText);
-//   fist.addEventListener('animationend', () => {
-//     fist.classList.remove('animate');
-//   fistSVG.style.opacity = ".2";
-//   vs.innerText = "vs.";
-//   console.log(fistSVG);
-//   console.log(vs.innerText);
 
-// }
 function getWeapons(elem) {
   fistSVG.style.opacity = ".2";
   vs.innerText = "vs.";
-  // playerVsComputer();
   if(elem.classList.contains('rck')) playerSelection = "rock";
   if(elem.classList.contains('ppr')) playerSelection = "paper";
   if(elem.classList.contains('scrs')) playerSelection = "scissors";
@@ -136,22 +113,11 @@ function updateRoundUI() {
 }
 function getWeaponsAndPlay(event){
   event.stopPropagation();
-
   const elem = event.currentTarget;
   getWeapons(elem);
   playRound(computerSelection, playerSelection);
   if(playerWins === 5 || computerWins === 5) return;
   setTimeout(resetRoundUI, 2500, computerSelection, elem);
-
-  // await new Promise(r => setTimeout(r, 2200));
-  // let ready = await resetRoundUI(...roundComplete);
-
-  // let weapons = await getWeapons(elem);
-  // let roundComplete = await playRound(...weapons);
-  // await new Promise(r => setTimeout(r, 2200));
-  // let ready = await resetRoundUI(...roundComplete);
-
-
 }
 
 function resetRoundUI(computerSelection, element) {
@@ -163,7 +129,6 @@ function resetRoundUI(computerSelection, element) {
 
   fistSVG.style.opacity = "1";
   vs.innerText = "";
-
   winnerText = `Round ${counter}`;
   roundSummary.innerText = winnerText;
   animateFist();
@@ -177,14 +142,6 @@ function game(){
   playerChoice.forEach((choice) => {
     choice.addEventListener('click', getWeaponsAndPlay);
   });
-  // for(let i=0; i<=30; i++){
-  //   playerChoice.forEach((choice) => {
-  //     choice.addEventListener('click', getWeaponsAndPlay);
-  //   if(playerWins < 5 && computerWins < 5){
-  //     animateFist();
-  //   }
-  // });
-
 }
 function resetGame() {
   playerChoice.forEach((choice) => {
