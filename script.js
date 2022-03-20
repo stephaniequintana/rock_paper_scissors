@@ -1,14 +1,3 @@
-// function setTheme() {
-//   const root = document.documentElement;
-//   const newTheme = root.className === 'dark' ? 'light' : 'dark';
-//   root.className = newTheme;
-
-//   document.querySelector('.theme-name').textContent = newTheme;
-// }
-
-// document.querySelector('.theme-toggle').addEventListener('click', setTheme);
-
-
 
 
 // write a function, playRound that plays a single round
@@ -27,13 +16,16 @@
             // paper v SCISSORS
             // scissors v ROCK
 //  playerSelection.trim().toLocaleLowerCase();
-const playerChoice = document.querySelectorAll('.player-choice');
+
 const play = document.getElementById('play');
+const reset = document.getElementById('reset');
+const playerChoice = document.querySelectorAll('.player-choice');
 const playerScore = document.getElementById('player-score');
 const computerScore = document.getElementById('computer-score');
 const roundSummary = document.getElementById('round-summary');
-const gameDiv = document.getElementById('game-fist');
-const fist = document.getElementById('fist');
+const vs = document.getElementById('vs');
+const fist = document.getElementById('game-fist');
+const fistSVG = document.getElementById('fist');
 const cRck = document.getElementById('c-rck');
 const cPpr = document.getElementById('c-ppr');
 const cScrs = document.getElementById('c-scrs');
@@ -42,39 +34,53 @@ let computerSelection;
 let playerWins = 0;
 let computerWins = 0;
 let winnerText = '';
+let counter = 1;
 let roundArr = [];
 
 window.addEventListener('load', () => {
   play.addEventListener('click', game);
 } )
-// play.addEventListener('click', game);
-function animateFist(){
-  fist.classList.add('animate');
-  fist.addEventListener('transitionend', () => {
-    fist.classList.remove('animate');
-  });
-}
+reset.addEventListener('click', resetGame);
+
 function updateToGameUI() {
   const bgImg = document.getElementById('bg-img');
   const gameContainer = document.getElementById('game-container');
 
-  play.style.visibility = "hidden";
+  play.style.display = "none";
   bgImg.style.display = "none";
   gameContainer.style.visibility = 'visible';
 }
 
+function animateFist(){
+  fist.classList.add('animate');
+  fist.addEventListener('animationend', () => {
+    fist.classList.remove('animate');
+    // fistSVG.style.opacity = ".2";
+    // vs.innerText = "vs.";
+  });
+}
+// function playerVsComputer(){
+//   console.log(fistSVG);
+//   console.log(vs.innerText);
+//   fist.addEventListener('animationend', () => {
+//     fist.classList.remove('animate');
+//   fistSVG.style.opacity = ".2";
+//   vs.innerText = "vs.";
+//   console.log(fistSVG);
+//   console.log(vs.innerText);
 
+// }
 function getWeapons(elem) {
+  fistSVG.style.opacity = ".2";
+  vs.innerText = "vs.";
+  // playerVsComputer();
   if(elem.classList.contains('rck')) playerSelection = "rock";
   if(elem.classList.contains('ppr')) playerSelection = "paper";
   if(elem.classList.contains('scrs')) playerSelection = "scissors";
   elem.classList.add('chosen');
-  console.log(elem.classList);
 
   computerPlay();
-  roundArr.push(computerSelection);
-  roundArr.push(playerSelection, elem);
-
+  roundArr.push(computerSelection, playerSelection, elem);
   return roundArr;
 }
 
@@ -84,12 +90,10 @@ function computerPlay(){
                       (randomNum == 2)? "paper" : "scissors";
   if(computerSelection === "rock")  cRck.classList.add('cmptr-chosen');
   if(computerSelection === "paper") cPpr.classList.add('cmptr-chosen');
-  if(computerSelection === "scissors") cScrs.classList.add('cmptr-chose');
+  if(computerSelection === "scissors") cScrs.classList.add('cmptr-chosen');
   console.log(`computer selected ${computerSelection}`);
   return computerSelection;
 }
-
-
 
 function playRound(computerSelection, playerSelection) {
   const rock = "rock";
@@ -106,10 +110,13 @@ function playRound(computerSelection, playerSelection) {
                   && computerSelection.localeCompare(paper) == 0)) {
                   winnerText = `You won this round, ${playerSelection} beats ${computerSelection}!!! `
                   playerWins +=1;
+                  counter++;
       } else {
         winnerText = `You lost this round, ${computerSelection} beats ${playerSelection}. WhaaaWhaaaa.`
         computerWins += 1;
+        counter++;
       }
+  updateRoundUI();
   return roundArr;
 }
 
@@ -120,27 +127,46 @@ function updateRoundUI() {
   if(computerWins === 5) {
     winnerText = `The COMPUTER WINS!!! \n You simply must practice more. \n (Just kidding - this is a game of chance)`;
   }
+  console.log(winnerText);
 
   roundSummary.innerText = winnerText;
   playerScore.innerText = playerWins;
   computerScore.innerText = computerWins;
 
 }
-async function getWeaponsAndPlay(event){
+function getWeaponsAndPlay(event){
   event.stopPropagation();
-  let elem = event.currentTarget;
-  let weapons = await getWeapons(elem);
-  let roundComplete = await playRound(...weapons);
-  let ready = await resetRoundUI(...roundComplete);
+
+  const elem = event.currentTarget;
+  getWeapons(elem);
+  playRound(computerSelection, playerSelection);
+  if(playerWins === 5 || computerWins === 5) return;
+  setTimeout(resetRoundUI, 2500, computerSelection, elem);
+
+  // await new Promise(r => setTimeout(r, 2200));
+  // let ready = await resetRoundUI(...roundComplete);
+
+  // let weapons = await getWeapons(elem);
+  // let roundComplete = await playRound(...weapons);
+  // await new Promise(r => setTimeout(r, 2200));
+  // let ready = await resetRoundUI(...roundComplete);
+
+
 }
 
-function resetRoundUI(computerPlay, playerSelection, elem) {
+function resetRoundUI(computerSelection, element) {
+  element.classList.remove('chosen');
   if(playerWins === 5 || computerWins === 5) return;
-  elem.classList.remove('chosen');
   if(computerSelection === "rock")  cRck.classList.remove('cmptr-chosen');
   if(computerSelection === "paper") cPpr.classList.remove('cmptr-chosen');
-  if(computerSelection === "scissors") cScrs.classList.remove('cmptr-chose');
-  const reload = document.getElementById('game-container');
+  if(computerSelection === "scissors") cScrs.classList.remove('cmptr-chosen');
+
+  fistSVG.style.opacity = "1";
+  vs.innerText = "";
+
+  winnerText = `Round ${counter}`;
+  roundSummary.innerText = winnerText;
+  animateFist();
   roundArr.length = 0;
   return roundArr;
 }
@@ -149,6 +175,32 @@ function game(){
   updateToGameUI();
   animateFist();
   playerChoice.forEach((choice) => {
-      choice.addEventListener('click', getWeaponsAndPlay);
+    choice.addEventListener('click', getWeaponsAndPlay);
   });
+  // for(let i=0; i<=30; i++){
+  //   playerChoice.forEach((choice) => {
+  //     choice.addEventListener('click', getWeaponsAndPlay);
+  //   if(playerWins < 5 && computerWins < 5){
+  //     animateFist();
+  //   }
+  // });
+
+}
+function resetGame() {
+  playerChoice.forEach((choice) => {
+    choice.classList.remove('chosen');
+  });
+  if(computerSelection === "rock")  cRck.classList.remove('cmptr-chosen');
+  if(computerSelection === "paper") cPpr.classList.remove('cmptr-chosen');
+  if(computerSelection === "scissors") cScrs.classList.remove('cmptr-chosen');
+  fistSVG.style.opacity = "1";
+  vs.innerText = "";
+  playerWins = 0;
+  computerWins = 0;
+  counter = 1;
+  winnerText = `Round ${counter}`;
+  roundSummary.innerText = winnerText;
+  playerScore.innerText = playerWins;
+  computerScore.innerText = computerWins;
+  game();
 }
