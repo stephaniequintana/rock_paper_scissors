@@ -117,7 +117,7 @@ function getWeaponsAndPlay(event){
   getWeapons(elem);
   playRound(computerSelection, playerSelection);
   if(playerWins === 5 || computerWins === 5) return;
-  setTimeout(resetRoundUI, 10000, computerSelection, elem);
+  setTimeout(resetRoundUI, 2500, computerSelection, elem);
 }
 
 function resetRoundUI(computerSelection, element) {

@@ -45,6 +45,7 @@ h1 {
 .tagline {
   display: inline-block;
   margin-top: -1rem;
+  margin-bottom:2rem;
   font-size: 1.5rem;
   letter-spacing: .1rem;
 }
@@ -86,7 +87,7 @@ h1 {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 25%;
   z-index: -1000;
 }
@@ -303,7 +304,7 @@ h1 {
   border-radius: 10px;
   box-shadow: .2rem .2rem .2rem #777;
   background: linear-gradient(to top, #88daae, #3e7c79, #7ec0a1);
-  transform: scale(3.1) rotate(90deg);
+  transform: scale(3.2) rotate(90deg);
   grid-column: 4 / 7;
   grid-row: 4 / 7;
   z-index: 1000;
@@ -312,7 +313,7 @@ h1 {
 .chosen.scrs {
   grid-column: 4/ 7;
   grid-row: 4 / 7;
-  transform: scale(3.1) rotate(180deg);
+  transform: scale(3.2) rotate(180deg);
 }
 
 .computer-choice {
@@ -325,14 +326,14 @@ h1 {
   border-radius: 10px;
   box-shadow: .2rem .2rem 2rem #777;
   background: linear-gradient(to top, #88a6da, #3e477c, #7e98c0);
-  transform: scale(3.1) rotate(-90deg);
+  transform: scale(3.2) rotate(-90deg);
   grid-column: 10 / 13;
   grid-row: 4 / 7;
   z-index: 1000;
 }
 
 .c-scrs.cmptr-chosen {
-  transform: scale(3.1) rotateZ(0deg);
+  transform: scale(3.2) rotateZ(0deg);
 }
 
 .btn-sm {
@@ -365,11 +366,11 @@ h1 {
   }
 
   .chosen {
-    transform: scale(2.9) rotate(90deg) translateY(-3rem);
+    transform: scale(2.9) rotate(90deg);
   }
 
   .chosen.scrs {
-    transform: scale(2.9) rotate(180deg) translateY(0);
+    transform: scale(2.9) rotate(180deg);
   }
 
   .cmptr-chosen {
@@ -447,6 +448,10 @@ h1 {
     grid-row: 6 / 9;
     grid-column: 6 / 10;
     transform: scale(2.9) rotateZ(0deg);
+  }
+
+  .reset {
+    margin-top:3rem;
   }
 }
 
