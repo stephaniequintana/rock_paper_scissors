@@ -3,6 +3,12 @@
 > The complete list of instructions for the first phase of the project can be found [here](https://github.com/gitpoint/git-point/edit/master/README.md).
 <!-- > Live demo [_here_](https://www.example.com). If you have the project hosted somewhere, include the link here. -->
 
+<div style="display: flex; justify-content: space-around; align-items: center;">
+  <img src="assets/rps_desktop.gif" style="display: block; max-width: 100%">
+  <img src="assets/rps_mobile.gif" style="display: block; max-width: 100%">
+</div>
+
+
 ## Table of Contents
 * [General Info](#general-information)
 * [Challenges Encountered and Knowledge Gained](#challenges-encountered-and-knowledge-gained)
@@ -29,7 +35,6 @@
     - I made the mistake of assuming that calling a function from within another function gave access to the latter's variables. It does not. The realization was a HUGE 'AHHHH HAAAAA' moment in my learning. The ability to return a function's value to another function is where the magic lives.
 
 ## Languages
-- JavaScript
-
-## To-Do
-- The UI for this project will be completed in section 12.
+- JavaScript (vanilla)
+- CSS - Grid
+- HTML
