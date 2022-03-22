@@ -51,3 +51,4 @@ Check out the [live site](https://stephaniequintana.github.io/rock_paper_scissor
 - JavaScript (vanilla)
 - CSS - Grid
 - HTML
+.

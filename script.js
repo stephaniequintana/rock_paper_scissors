@@ -170,3 +170,4 @@ function resetGame() {
   });
   game();
 }
+function nothing(){return};
