@@ -6,7 +6,7 @@
             // rock v PAPER
             // paper v SCISSORS
             // scissors v ROCK
-
+const gameContainer = document.getElementById('game-container');
 const play = document.getElementById('play');
 const reset = document.getElementById('reset');
 const playerChoice = document.querySelectorAll('.player-choice');
@@ -34,8 +34,6 @@ reset.addEventListener('click', resetGame);
 
 function updateToGameUI() {
   const bgImg = document.getElementById('bg-img');
-  const gameContainer = document.getElementById('game-container');
-
   play.style.display = "none";
   bgImg.style.display = "none";
   gameContainer.style.visibility = 'visible';
@@ -113,14 +111,22 @@ function updateRoundUI() {
 }
 function getWeaponsAndPlay(event){
   event.stopPropagation();
+  gameContainer.style.pointerEvents = 'none';
   const elem = event.currentTarget;
   getWeapons(elem);
   playRound(computerSelection, playerSelection);
-  if(playerWins === 5 || computerWins === 5) return;
+  if(playerWins === 5 || computerWins === 5) {
+    gameContainer.style.pointerEvents = 'none';
+    playerChoice.forEach((choice) => {
+    choice.removeEventListener('click', getWeaponsAndPlay);
+    });
+    return;
+  }
   setTimeout(resetRoundUI, 2500, computerSelection, elem);
 }
 
 function resetRoundUI(computerSelection, element) {
+  gameContainer.style.pointerEvents = 'auto';
   element.classList.remove('chosen');
   if(playerWins === 5 || computerWins === 5) return;
   if(computerSelection === "rock")  cRck.classList.remove('cmptr-chosen');
@@ -159,5 +165,8 @@ function resetGame() {
   roundSummary.innerText = winnerText;
   playerScore.innerText = playerWins;
   computerScore.innerText = computerWins;
+  playerChoice.forEach((choice) => {
+    choice.removeEventListener('click', getWeaponsAndPlay);
+  });
   game();
 }

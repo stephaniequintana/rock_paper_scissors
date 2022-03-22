@@ -44,10 +44,8 @@ h1 {
 
 .tagline {
   display: inline-block;
-  margin-top: -1rem;
-  margin-bottom:2rem;
-  font-size: 1.5rem;
   letter-spacing: .1rem;
+  font-size: 1.75rem;
 }
 
 .btn-play {
@@ -72,8 +70,9 @@ h1 {
   transform: scale(1.05);
   transition: all .2s ease;
 }
+
 .btn-lg {
-  width: clamp(5em, 8em, 15em);
+  width: clamp(5em, 7em, 13em);
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: .2rem;
@@ -81,14 +80,14 @@ h1 {
 }
 
 .bg-img {
-  height: 40vh;
-  width: 40vw;
+  height: 25vh;
+  width: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 50%;
-  left: 25%;
+  top: 37%;
+  left: 35%;
   z-index: -1000;
 }
 
@@ -102,12 +101,13 @@ h1 {
   margin: 0 auto;
   max-width:100vw;
   display: grid;
-  grid-template-rows:  repeat(7, min-content);
-  grid-template-columns: 1fr 1fr 25rem repeat(9, minmax(min-content, 10rem)) 25rem 1fr 1fr;
-  grid-template-areas: ". . . . summary summary summary summary summary summary summary . . . ."
-                       ". . . . summary summary summary summary summary summary summary . . . ."
-                       " . . you . summary summary summary summary summary summary summary . computer . ."
-                       ". . p-score choose arrow1 p-rck fist fist fist c-rck arrow4 random c-score . ."
+  grid-template-rows:  repeat(3, min-content) 16rem repeat(4, min-content);
+  grid-template-columns: 5rem 1fr 1fr repeat(9, minmax(min-content, 10rem)) 1fr 1fr 5rem;
+  grid-template-areas: ". . . . . summary summary summary summary summary . . . . ."
+                       ". . . you you summary summary summary summary summary computer computer . . ."
+                       ". . . . . summary summary summary summary summary . . . . ."
+                       ". . . p-score p-score summary summary summary summary summary c-score c-score . . ."
+                       ". . . choose arrow1 p-rck fist fist fist c-rck arrow4 random . . ."
                        ". . . choose arrow2 p-ppr fist fist fist c-ppr arrow5 random . . ."
                        ". . . choose arrow3 p-scrs fist fist fist c-scrs arrow6 random . . ."
                        ". . . . . . . reset . . . . . . .";
@@ -124,8 +124,7 @@ h1 {
 }
 .round-summary {
   grid-area: summary;
-  height: 30vh;
-  font-size: 2.7rem;
+  font-size: 4rem;
   text-align: center;
   background-image: linear-gradient(90deg, var(--computer-color)  20%, var(--fist-color) 66%, var(--player-color) 80%);
   background-clip: text;
@@ -135,8 +134,7 @@ h1 {
   transition: all 0.2s;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  margin-bottom:3rem;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -168,6 +166,21 @@ h1 {
 .arrow3 {
   grid-area: arrow3;
   color: var(--player-color);
+}
+
+svg {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+#fist {
+  fill: var(--fist-color);
+  width: 22.5rem;
+  height: 22.5rem;
+}
+
+.fist .vs {
+  font: 3rem;
 }
 
 .rck {
@@ -248,16 +261,11 @@ h1 {
   font-size: 10rem;
   font-weight: bold;
   display: inline-block;
-  margin-top: -2rem;
+  margin-top: 2rem;
 }
 
 .player-choice svg {
   fill: var(--player-color);
-}
-
-#fist {
-  fill: var(--fist-color);
-  font-size: 3rem;
 }
 
 .computer-choice svg {
@@ -301,19 +309,21 @@ h1 {
 }
 
 .chosen {
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: .2rem .2rem .2rem #777;
   background: linear-gradient(to top, #88daae, #3e7c79, #7ec0a1);
-  transform: scale(3.2) rotate(90deg);
+  transform: scale(4) rotate(90deg);
   grid-column: 4 / 7;
-  grid-row: 4 / 7;
+  grid-row: 5 / 8;
   z-index: 1000;
+  transition: all 0.2s;
 }
 
 .chosen.scrs {
   grid-column: 4/ 7;
-  grid-row: 4 / 7;
-  transform: scale(3.2) rotate(180deg);
+  grid-row: 5 / 8;
+  transform: scale(4) rotate(180deg);
+  transition: all 0.2s;
 }
 
 .computer-choice {
@@ -323,17 +333,19 @@ h1 {
   padding: .5rem;
 }
 .cmptr-chosen {
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: .2rem .2rem 2rem #777;
   background: linear-gradient(to top, #88a6da, #3e477c, #7e98c0);
-  transform: scale(3.2) rotate(-90deg);
+  transform: scale(4) rotate(-90deg);
   grid-column: 10 / 13;
-  grid-row: 4 / 7;
+  grid-row: 5 / 8;
   z-index: 1000;
+  transition: all 0.2s;
 }
 
 .c-scrs.cmptr-chosen {
-  transform: scale(3.2) rotateZ(0deg);
+  transform: scale(4) rotateZ(0deg);
+  transition: all 0.2s;
 }
 
 .btn-sm {
@@ -343,6 +355,25 @@ h1 {
   padding: 1em 2em;
   border-radius: 5px;
   width: 10rem;
+  margin-top: 3rem;
+}
+
+@media only screen and (min-width: 93.75em) {
+  .chosen {
+    transform: scale(4.0) rotate(90deg);
+  }
+
+  .chosen.scrs {
+    transform: scale(4.0) rotate(180deg);
+  }
+
+  .cmptr-chosen {
+    transform: scale(4.0) rotate(-90deg);
+  }
+
+  .c-scrs.cmptr-chosen {
+    transform: scale(4.0) rotateZ(0deg);
+  }
 }
 
 @media only screen and (max-width: 75em) {
@@ -361,24 +392,30 @@ h1 {
     margin-top: 1rem;
   }
 
+  .round-summary {
+    font-size: 3.5rem;
+  }
   .player-title, .computer-title {
     font-size: 4rem;
   }
 
+  .vs{
+    font-size: 4rem;
+  }
   .chosen {
-    transform: scale(2.9) rotate(90deg);
+    transform: scale(4) rotate(90deg);
   }
 
   .chosen.scrs {
-    transform: scale(2.9) rotate(180deg);
+    transform: scale(4) rotate(180deg);
   }
 
   .cmptr-chosen {
-    transform: scale(2.9) rotate(-90deg);
+    transform: scale(4) rotate(-90deg);
   }
 
   .c-scrs.cmptr-chosen {
-    transform: scale(2.9) rotateZ(0deg);
+    transform: scale(4) rotateZ(0deg);
   }
 
 }
@@ -396,13 +433,25 @@ h1 {
   }
 
   svg {
-    transform: scale(.6);
+    transform: scale(.8);
   }
 
   .round-summary {
+    font-size: 3rem;
     margin: 4rem auto 0;
   }
 
+  .player-title, .computer-title {
+    align-self: end;
+    font-size: 2.4rem;
+  }
+  .computer-title{
+    margin-left:-4rem;
+  }
+  .player-score, .computer-score {
+    margin-top: 0;
+    font-size: 8rem;
+  }
   .choose, .random {
     font-size: 2.5rem;
     font-weight: bold;
@@ -412,7 +461,7 @@ h1 {
   }
   .game-container {
     grid-template-rows: repeat(10, min-content);
-    grid-template-columns: 1fr repeat(7, minmax(min-content, 5rem)) 1fr;
+    grid-template-columns: 5rem repeat(3, minmax(min-content, 5rem)) 8rem repeat(3, minmax(min-content, 5rem)) 5rem;
     grid-template-areas: ". summary summary summary summary summary summary summary  ."
                          ". summary summary summary summary summary summary summary  ."
                          ". summary summary summary summary summary summary summary  ."
@@ -427,27 +476,27 @@ h1 {
   .chosen {
     justify-self: center;
     grid-row: 6 / 9;
-    grid-column: 1 / 5;
-    transform: scale(2.9) rotate(90deg);
+    grid-column: 2 / 5;
+    transform: scale(3) rotate(90deg);
   }
 
   .chosen.scrs {
     justify-self: center;
     grid-row: 6 / 9;
-    grid-column: 1 / 5;
-    transform: scale(2.9) rotate(180deg);
+    grid-column: 2 / 5;
+    transform: scale(3) rotate(180deg);
   }
 
   .cmptr-chosen {
     grid-row: 6 / 9;
-    grid-column: 6 / 10;
-    transform: scale(2.9) rotate(-90deg);
+    grid-column: 6 / 9;
+    transform: scale(3) rotate(-90deg);
   }
 
   .c-scrs.cmptr-chosen {
     grid-row: 6 / 9;
-    grid-column: 6 / 10;
-    transform: scale(2.9) rotateZ(0deg);
+    grid-column: 6 / 9;
+    transform: scale(3) rotateZ(0deg);
   }
 
   .reset {
@@ -459,47 +508,89 @@ h1 {
   .bg-img{
     height: 50vh;
     width: 50vw;
-    top: 5%;
+    top: 15%;
     left: 20%;
   }
 
+  .game-container {
+    grid-template-columns: 5rem repeat(3, 1fr) 3rem repeat(3, 1fr) 5rem;
+  }
+
   svg {
-    transform: scale(.5);
+    /* transform: scale(.5); */
   }
 
   .round-summary {
     margin-top: 5rem;
   }
 
-  .player-title, .computer-title {
-    font-size: 3rem;
+  .computer-title {
+    margin-left: -8rem;
   }
 
-  .computer-title {
-    margin-left: -7rem;
-  }
 
   .p-score, .c-score {
-    font-size: 6rem;
+    font-size: 4rem;
   }
 
   .player-choice, .computer-choice {
-    padding: 1rem;
+    padding: 0;
   }
 
   .chosen {
-    transform: scale(2.2) rotate(90deg);
+    transform: scale(3.2) rotate(90deg);
   }
 
   .chosen.scrs {
-    transform: scale(2.2) rotate(180deg) translateY(0);
+    transform: scale(3.2) rotate(180deg) translateY(0);
   }
 
   .cmptr-chosen {
-    transform: scale(2.2) rotate(-90deg);
+    transform: scale(3.2) rotate(-90deg);
   }
 
   .c-scrs.cmptr-chosen {
-    transform: scale(2.2) rotateZ(0deg);
+    transform: scale(3.2) rotateZ(0deg);
   }
+}
+
+@media only screen and (max-width: 25em) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .bg-img {
+    height:40vh;
+    width: 40vw;
+    top: 20%;
+    left: 25%
+  }
+
+  .tagline{
+    text-align: center;
+  }
+
+  svg {
+    width: 4.5rem;
+    height:4.5rem;
+  }
+  .computer-title {
+    margin-left: -10rem;
+  }
+  .chosen {
+    transform: scale(4.3) rotate(90deg);
+  }
+
+  .chosen.scrs {
+    transform: scale(4.3) rotate(180deg) translateY(0);
+  }
+
+  .cmptr-chosen {
+    transform: scale(4.3) rotate(-90deg);
+  }
+
+  .c-scrs.cmptr-chosen {
+    transform: scale(4.3) rotateZ(0deg);
+  }
+}
 }
