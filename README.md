@@ -1,10 +1,12 @@
 # Rock, Paper, Scissors - the game.
-> An exercise from The Odin Project Foundations Course, JavaScript Basics.
-> The complete list of instructions for the first phase of the project can be found [here](https://github.com/gitpoint/git-point/edit/master/README.md).
-<!-- > Live demo [_here_](https://www.example.com). If you have the project hosted somewhere, include the link here. -->
 
-<div style="display: flex; justify-content: space-around; align-items: center;">
-  <img src="assets/rps_desktop.gif" style="display: block; max-width: 100%">
+Check out the [live site](https://stephaniequintana.github.io/rock_paper_scissors/)!
+
+> An exercise from The Odin Project Foundations Course, JavaScript Basics.
+> The complete list of instructions for the first phase of the project, the JavaScript logic, can be found [here](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors). The second phase adds a UI *and contains plenty of logic in it's own right!* It can be found [here](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/revisiting-rock-paper-scissors).
+
+<div align="center">
+  <img src="assets/rpc_desktop.gif" style="display: block; max-width: 100%">
   <img src="assets/rps_mobile.gif" style="display: block; max-width: 100%">
 </div>
 
@@ -21,9 +23,20 @@
     * Finally, creating a function which selects the winner, the best of 5 rounds.
 
 - The second phase of the project is all about creating a user interface for the game. This was FUN (&&& more challenging than I assumed it would be)!!!
+    *
     * I opted to go with SVGs because I wanted more exposure with working with them. Specifically, I wanted to play with SVG animation.
+    * This was an excellent opportunity to get more practice with
 
 ## Challenges Encountered and Knowledge Gained
+* git
+    - This project provided and excellent opportunity to begin utilizing and putting to memory the ever-so-necessary `git checkout -b new_branch`, `git merge`, `git pull` and `git rebase` and more...
+* css grid
+    - I was able to utilize the grid layout for mobile and desktop, by easily updating `grid-gap` and `grid-area` the layouts were a seamless transition.
+* DOM manipulation
+    - The bulk of my manipulations came from adding/removing classes and figuring this into the logic was fun! I also utilized `setTimeout` to reset the UI between rounds along with `gameContainer.style.pointerEvents = 'auto';` for disabling the click event
+
+    > `playerChoice.forEach((choice) => {choice.addEventListener('click', getWeaponsAndPlay);});`
+
 * The Ternary Operator,
     `(conditional) ? chooseIfTrue : chooseIfFalse;`,
     is by far more convenient than writing out a lengthy if statement.
@@ -38,3 +51,4 @@
 - JavaScript (vanilla)
 - CSS - Grid
 - HTML
+.
